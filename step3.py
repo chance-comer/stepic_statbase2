@@ -4,7 +4,6 @@ Created on Fri Jul  6 15:22:51 2018
 
 @author: kazantseva
 """
-
 import pandas as pd
 
 data = pd.read_csv('iris.csv')
