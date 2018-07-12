@@ -22,6 +22,7 @@ so I change for this task 2 to 0
 import pandas as pd
 import numpy as np
 import statsmodels.api as sm
+from sklearn.linear_models import LogisticRegression as LR
 
 data = pd.read_csv("test_data_01.csv")
 
@@ -47,10 +48,16 @@ model_data.drop(['x_1'], axis=1, inplace=True)
 
 #m = sm.GLM(data['y'], model_data, family=sm.families.Binomial()).fit()
 
-m = sm.formula.glm('y ~ C(x)', data=data, family = sm.families.Binomial()).fit()
-print(m.summary())
+#m = sm.formula.glm('y ~ C(x)', data=data, family = sm.families.Binomial()).fit()
+#print(m.summary())
 
 #logit = sm.Logit(data['y'], model_data[['const', 'x_2', 'x_3']])
 #m = logit.fit()
 #print(m.summary())
+
+logr = LR()
+m = logr.fit(model_data[['const', 'x_2', 'x_3']], data['y'] )
+#results = logr.predict( test_data)
+print(m.summary())
+
 
